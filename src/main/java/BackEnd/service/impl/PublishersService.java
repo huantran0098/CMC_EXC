@@ -31,4 +31,9 @@ public class PublishersService implements IPublishersService {
     public Boolean existsByIdPublisher(Long idPublishers) {
         return publishersRepository.existsByIdPublisher(idPublishers);
     }
+
+    @Override
+    public int getPublishersBookCount(Long idPublishers) {
+        return publishersRepository.getPublishersBookCount(idPublishers);
+    }
 }

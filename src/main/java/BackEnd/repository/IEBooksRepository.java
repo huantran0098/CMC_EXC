@@ -16,5 +16,5 @@ public interface IEBooksRepository extends JpaRepository<EBooks, Long> {
     Boolean existsByIdBook(Long idEBook);
     Boolean existsByStandardBookNumber(String standardBookNumber);
     @Query(value = "UPDATE books SET quantity = quantity + :bookQuantity  WHERE  = standardBookNumber = :standardBookNumber;" , nativeQuery = true)
-    void plusQuantityByStandardBookNumber(@Param("standardBookNumber") String standardBookNumber, int bookQuantity);
+    void plusQuantityByStandardBookNumber(@Param("standardBookNumber") String standardBookNumber, @Param("bookQuantity") int bookQuantity);
 }

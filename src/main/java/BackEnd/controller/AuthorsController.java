@@ -14,6 +14,13 @@ public class AuthorsController {
     @Autowired
     private IAuthorsService authorsService;
 
+    @GetMapping("/information/{idAuthors}")
+    public ResponseEntity<?> getAuthorsDetails(@PathVariable Long idAuthors){
+        int countBook = authorsService.getAuthorsBookCount(idAuthors);
+        // chưa tìm ra danh sách 3 đầu sách bán chạy nhất
+        return new ResponseEntity<>(countBook, HttpStatus.OK);
+    }
+
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody Authors authors){
         if (!authorsService.existsByIdAuthors(authors.getIdAuthors())){

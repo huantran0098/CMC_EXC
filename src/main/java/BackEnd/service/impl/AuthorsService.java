@@ -20,6 +20,11 @@ public class AuthorsService implements IAuthorsService {
     }
 
     @Override
+    public int getAuthorsBookCount(Long idAuthors) {
+        return authorsRepository.getAuthorsBookCount(idAuthors);
+    }
+
+    @Override
     public Optional<Authors> findById(Long id) {
         return authorsRepository.findById(id);
     }

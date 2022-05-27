@@ -13,6 +13,13 @@ public class PublishersController {
     @Autowired
     private IPublishersService publishersService;
 
+    @GetMapping("/{idPublishers}")
+    private ResponseEntity<?> getPublishersDetails(@PathVariable Long idPublishers){
+        int bookCountPublishers = publishersService.getPublishersBookCount(idPublishers);
+        // chưa tìm ra top 5 đầu sách bán chạy nhất
+        return new ResponseEntity<>(bookCountPublishers, HttpStatus.OK);
+    }
+
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody Publishers publishers){
         publishersService.save(publishers);

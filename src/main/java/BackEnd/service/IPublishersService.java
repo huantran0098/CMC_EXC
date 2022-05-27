@@ -4,4 +4,5 @@ import BackEnd.model.Publishers;
 
 public interface IPublishersService extends IGeneralService<Publishers> {
     Boolean existsByIdPublisher(Long idPublishers);
+    int getPublishersBookCount(Long idPublishers);
 }
