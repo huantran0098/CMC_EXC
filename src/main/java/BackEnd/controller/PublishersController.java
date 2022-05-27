@@ -23,7 +23,9 @@ public class PublishersController {
         if (!publishersService.existsByIdPublisher(idPublishers)){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
-
+            publishers.setIdPublisher(idPublishers);
+            publishersService.save(publishers);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
     }
 }
