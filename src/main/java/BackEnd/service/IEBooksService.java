@@ -10,4 +10,5 @@ public interface IEBooksService extends IGeneralService<EBooks> {
     Boolean existsByAuthors(Authors authors);
     Boolean existsByIdBook(Long idEBook);
     Boolean existsByStandardBookNumber(String standardBookNumber);
+    void minusQuantityByStandardBookNumber(String standardBookNumber, int quantity);
 }

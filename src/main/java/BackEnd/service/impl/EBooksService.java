@@ -36,6 +36,11 @@ public class EBooksService implements IEBooksService {
     }
 
     @Override
+    public void minusQuantityByStandardBookNumber(String standardBookNumber, int quantity) {
+        booksRepository.minusQuantityByStandardBookNumber(standardBookNumber, quantity);
+    }
+
+    @Override
     public Optional<EBooks> findById(Long id) {
         return booksRepository.findById(id);
     }
