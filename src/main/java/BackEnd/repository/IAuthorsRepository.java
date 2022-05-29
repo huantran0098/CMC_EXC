@@ -12,11 +12,10 @@ public interface IAuthorsRepository extends JpaRepository<Authors, Long> {
     Boolean existsByIdAuthors(Long idAuthors);
 
     @Query(value =
-            "SELECT * FROM eb_shop.authors;\n" +
-            "SELECT COUNT(b.id_authors) \n" +
-            "FROM books b JOIN authors a \n" +
-            "ON b.id_authors = a.id_authors \n" +
-            "WHERE b.id_authors = :idAuthors \n" +
-            "GROUP BY b.id_authors ", nativeQuery = true)
+            "SELECT COUNT(b.authors_id_authors) \n" +
+                    "FROM books b JOIN authors a \n" +
+                    "ON b.authors_id_authors = a.id_authors \n" +
+                    "WHERE b.authors_id_authors = " + " :idAuthors \n" +
+                    "GROUP BY b.authors_id_authors ", nativeQuery = true)
     int getAuthorsBookCount(Long idAuthors);
 }

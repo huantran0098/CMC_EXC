@@ -12,27 +12,19 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idOrders;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_customers")
+    @ManyToOne
     private Customers customers;
 
     private Date createdDate;
-
-    @ManyToMany
-    @JoinTable(name = "orders_cart",
-                joinColumns = @JoinColumn(name = "id_ebooks"),
-                inverseJoinColumns = @JoinColumn(name = "quantity"))
-    private Set<EBooks> eBooks;
 
 
     public Orders() {
     }
 
-    public Orders(Long idOrders, Customers customers, Date createdDate, Set<EBooks> eBooks) {
+    public Orders(Long idOrders, Customers customers, Date createdDate) {
         this.idOrders = idOrders;
         this.customers = customers;
         this.createdDate = createdDate;
-        this.eBooks = eBooks;
     }
 
     public Long getIdOrders() {
@@ -59,11 +51,4 @@ public class Orders {
         this.createdDate = createdDate;
     }
 
-    public Set<EBooks> geteBooks() {
-        return eBooks;
-    }
-
-    public void seteBooks(Set<EBooks> eBooks) {
-        this.eBooks = eBooks;
-    }
 }

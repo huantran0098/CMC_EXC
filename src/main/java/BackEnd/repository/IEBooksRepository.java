@@ -12,12 +12,20 @@ import java.util.Optional;
 @Repository
 public interface IEBooksRepository extends JpaRepository<EBooks, Long> {
     Optional<EBooks> findByStandardBookNumber(String standardBookNumber);
+
     Boolean existsByAuthors(Authors authors);
+
     Boolean existsByIdBook(Long idEBook);
+
     Boolean existsByStandardBookNumber(String standardBookNumber);
-    @Query(value = "UPDATE books SET quantity = quantity + :bookQuantity  WHERE  = standardBookNumber = :standardBookNumber;" , nativeQuery = true)
+
+    @Query(value =
+            "UPDATE books SET quantity = quantity + " + ":bookQuantity " +
+                    "WHERE standard_book_number =  " + ":standardBookNumber", nativeQuery = true)
     void plusQuantityByStandardBookNumber(@Param("standardBookNumber") String standardBookNumber, @Param("bookQuantity") int bookQuantity);
 
-    @Query(value = "UPDATE books SET quantity = quantity - :bookQuantity  WHERE  = standardBookNumber = :standardBookNumber;" , nativeQuery = true)
+    @Query(value =
+            "UPDATE books SET quantity = quantity - " + ":bookQuantity " +
+                    "WHERE standard_book_number =  " + ":standardBookNumber", nativeQuery = true)
     void minusQuantityByStandardBookNumber(@Param("standardBookNumber") String standardBookNumber, @Param("bookQuantity") int bookQuantity);
 }

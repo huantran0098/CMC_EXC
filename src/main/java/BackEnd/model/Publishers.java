@@ -1,5 +1,7 @@
 package BackEnd.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,10 +10,13 @@ public class Publishers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPublisher;
+    @NotNull
     private String namePublisher;
     private String websitePublisher;
+    @NotNull
     private String founderName;
     private int foundedYear;
+    @NotNull
     private String addressPublisher;
 
     public Publishers() {

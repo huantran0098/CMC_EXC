@@ -23,12 +23,8 @@ public class AuthorsController {
 
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody Authors authors){
-        if (!authorsService.existsByIdAuthors(authors.getIdAuthors())){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        } else {
-            authorsService.save(authors);
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
+        authorsService.save(authors);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
     @PutMapping("/update/{idAuthors}")
     public ResponseEntity<?> update(@PathVariable Long idAuthors, @RequestBody Authors authors){

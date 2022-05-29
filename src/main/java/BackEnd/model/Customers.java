@@ -1,6 +1,8 @@
 package BackEnd.model;
 
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,6 +13,8 @@ public class Customers {
     private Long idCustomers;
     private String firstNameCustomers;
     private String lastNameCustomers;
+    @NotNull
+    @Column(unique = true)
     private String emailCustomers;
     private String phoneCustomers;
     private String addressCustomers;

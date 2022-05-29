@@ -1,5 +1,7 @@
 package BackEnd.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
@@ -10,31 +12,25 @@ public class EBooks {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idBook;
+    @NotNull
     private String title;
+    @NotNull
+    @Column(unique = true)
     private String standardBookNumber;
     private String descriptionBook;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_authors")
+    @ManyToOne
     private Authors authors;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_publisher")
+    @ManyToOne
     private Publishers publishers;
-
+    @NotNull
     private Date publicationDate;
     private int pages;
     private Long price;
     private int quantity;
 
     private Boolean isDeleted = false;
-
-    @ManyToMany
-    @JoinTable(name = "orders_details",
-            joinColumns = @JoinColumn(name = "id_ebooks"),
-            inverseJoinColumns = @JoinColumn(name = "id_orders")
-    )
-    private Set<Orders> orders;
 
     public EBooks() {
     }
