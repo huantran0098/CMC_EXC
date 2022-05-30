@@ -1,9 +1,10 @@
 package BackEnd.model;
 
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "customers")
@@ -11,12 +12,17 @@ public class Customers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCustomers;
+    @NotNull
     private String firstNameCustomers;
+    @NotNull
     private String lastNameCustomers;
     @NotNull
     @Column(unique = true)
+    @Email
     private String emailCustomers;
+    @NotNull
     private String phoneCustomers;
+    @NotNull
     private String addressCustomers;
 
     public Customers() {
